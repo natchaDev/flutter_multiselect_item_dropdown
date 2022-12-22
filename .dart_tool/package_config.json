@@ -134,13 +134,13 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "flutter_multiselect_item_dropdown",
+      "name": "multiselect_item_dropdown",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-22T09:23:29.905535Z",
+  "generated": "2022-12-22T09:41:51.940012Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

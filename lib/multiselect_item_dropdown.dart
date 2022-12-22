@@ -1,4 +1,4 @@
-library flutter_multiselect_item_dropdown;
+library multiselect_item_dropdown;
 
 import 'package:flutter/material.dart';
 
