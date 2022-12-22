@@ -134,13 +134,13 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "multiselect_item_dropdown",
+      "name": "multiselected_item_dropdown",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-22T09:44:54.656340Z",
+  "generated": "2022-12-22T09:53:14.458806Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

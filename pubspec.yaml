@@ -1,7 +1,6 @@
-name: multiselect_item_dropdown
-description: A new Flutter package project.
+name: multiselected_item_dropdown
+description: Multiple select item dropdown
 version: 0.0.1
-publish_to: https://pub.dev
 homepage: https://github.com/natchaDev/flutter_multiselect_item_dropdown
 
 environment:

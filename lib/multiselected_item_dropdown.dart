@@ -1,4 +1,4 @@
-library multiselect_item_dropdown;
+library multiselected_item_dropdown;
 
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ extension FirstWhereExtension<T> on List<T> {
 
 const String DROP_DOWN_ITEM_ALL = 'all';
 
-class MultiSelectItemDropdown<T> extends StatefulWidget {
+class MultiSelectedItemDropdown<T> extends StatefulWidget {
   final List<T> list;
   final String hintText;
   final Function(T) onSelectedItem;
@@ -39,7 +39,7 @@ class MultiSelectItemDropdown<T> extends StatefulWidget {
   final Function(List<T?> selectedList)? onUpdateSelectedList;
   String Function(T item)? stringBuilder;
 
-  MultiSelectItemDropdown(
+  MultiSelectedItemDropdown(
     this.list,
     this.hintText, {
     required this.onSelectedItem,
@@ -62,12 +62,12 @@ class MultiSelectItemDropdown<T> extends StatefulWidget {
   }
 
   @override
-  _MultiSelectItemDropdownState<T> createState() =>
-      _MultiSelectItemDropdownState<T>();
+  _MultiSelectedItemDropdownState<T> createState() =>
+      _MultiSelectedItemDropdownState<T>();
 }
 
-class _MultiSelectItemDropdownState<T>
-    extends State<MultiSelectItemDropdown<T>> {
+class _MultiSelectedItemDropdownState<T>
+    extends State<MultiSelectedItemDropdown<T>> {
   List<T> _list = [];
   T? _selectedItem;
   List<T?> _selectedList = [];
@@ -80,7 +80,7 @@ class _MultiSelectItemDropdownState<T>
   }
 
   @override
-  void didUpdateWidget(covariant MultiSelectItemDropdown<T> oldWidget) {
+  void didUpdateWidget(covariant MultiSelectedItemDropdown<T> oldWidget) {
     _init();
     super.didUpdateWidget(oldWidget);
   }
