@@ -1,7 +1,8 @@
 name: flutter_multiselect_item_dropdown
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+author: Natcha Sakulna
+homepage: https://github.com/natchaDev/flutter_multiselect_item_dropdown
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
