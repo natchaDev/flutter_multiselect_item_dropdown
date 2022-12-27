@@ -2,22 +2,6 @@ library multiselected_item_dropdown;
 
 import 'package:flutter/material.dart';
 
-extension ListUtil on List? {
-  bool get isNotBlank => this != null && this!.isNotEmpty;
-
-  bool get isBlank => this == null || this!.isEmpty;
-}
-
-extension FirstWhereExtension<T> on List<T> {
-  /// The first element satisfying [test], or `null` if there are none.
-  T? firstWhereOrNull(bool Function(T element) test) {
-    for (var element in this) {
-      if (test(element)) return element;
-    }
-    return null;
-  }
-}
-
 const String DROP_DOWN_ITEM_ALL = 'all';
 
 class MultiSelectedItemDropdown<T> extends StatefulWidget {
@@ -99,28 +83,26 @@ class _MultiSelectedItemDropdownState<T>
       if (widget.initialValue != null) {
         _selectedItem = widget.initialValue;
       }
-      if (widget.isShowMultiSelected && widget.selectedList.isNotBlank) {
-        _selectedList = widget.selectedList!;
+      if (widget.isShowMultiSelected) {
+        _selectedList = widget.selectedList ?? [];
       }
     });
   }
 
   _updateSelectedList(T selectedValue, {required bool isAddData}) {
     setState(() {
-      if (_selectedList.isNotBlank) {
-        bool hasData = _selectedList.firstWhereOrNull((item) {
-              var selectedStr = widget.stringBuilder?.call(selectedValue);
-              var itemStr = widget.stringBuilder?.call(item!);
-              if (selectedStr == itemStr) return true;
-              return false;
-            }) !=
-            null;
+      bool hasData = _selectedList.firstWhere((item) {
+            var selectedStr = widget.stringBuilder?.call(selectedValue);
+            var itemStr = widget.stringBuilder?.call(item!);
+            if (selectedStr == itemStr) return true;
+            return false;
+          }, orElse: () => null) !=
+          null;
 
-        if (hasData) {
-          if (isAddData) return;
-          _selectedList.remove(selectedValue);
-          return;
-        }
+      if (hasData) {
+        if (isAddData) return;
+        _selectedList.remove(selectedValue);
+        return;
       }
       _selectedList.add(selectedValue);
     });
