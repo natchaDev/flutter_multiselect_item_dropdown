@@ -13,6 +13,7 @@ class MultiSelectedItemDropdown<T> extends StatefulWidget {
   final TextStyle? itemTextStyle;
   final Color? iconColor;
   final Color? backgroundDropdownColor;
+  final Color? backgroundDropdown2Color;
   final Color? backgroundChipColor;
   final Color? backgroundChipTextColor;
   final bool? showAll;
@@ -150,7 +151,7 @@ class _MultiSelectedItemDropdownState<T>
         padding: const EdgeInsets.only(top: 5, bottom: 5),
         decoration: widget.showBorder
             ? BoxDecoration(
-                color: widget.backgroundDropdownColor,
+                color: widget.backgroundDropdown2Color,
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
               )
             : null,
