@@ -29,7 +29,8 @@ Usages and Example
 Default Dropdown
 
 <img src="./img/default_dropdown.png">
-```
+
+```dart
 MultiSelectedItemDropdown<String>(
               list: ['item 1', 'item 2', 'item 3', 'item 4'], //required field
               hint: 'Please Select...',
@@ -42,8 +43,9 @@ MultiSelectedItemDropdown<String>(
 Multiple Select Dropdown
 
 <img src="./img/multiple_selected_dropdown.png">
-```
-return MultiSelectedItemDropdown<String>(
+
+```dart
+MultiSelectedItemDropdown<String>(
               list: ['item 1', 'item 2', 'item 3', 'item 4'],  //required field
               hint: 'Please Select...',
               selectedList: ['item 1', 'item 2'],
