@@ -6,38 +6,36 @@ const String DROP_DOWN_ITEM_ALL = 'all';
 
 class MultiSelectedItemDropdown<T> extends StatefulWidget {
   final List<T> list;
-  final String hintText;
-  final Function(T) onSelectedItem;
+  final String? hintText;
+  final Function(T)? onSelectedItem;
   final T? initialValue;
   final TextStyle? hintTextStyle;
   final TextStyle? itemTextStyle;
   final Color? iconColor;
   final Color? backgroundDropdownColor;
-  final Color? backgroundDropdown2Color;
+  final Color? backgroundBorderRadiusColor;
   final Color? backgroundChipColor;
   final Color? backgroundChipTextColor;
-  final bool? showAll;
-  final bool showBorder;
+  final bool showBorderRadius;
   final bool isMultiSelected;
   final bool isShowMultiSelected;
   final List<T?>? selectedList;
   final Function(List<T?> selectedList)? onUpdateSelectedList;
   String Function(T item)? stringBuilder;
 
-  MultiSelectedItemDropdown(
-    this.list,
-    this.hintText, {
-    required this.onSelectedItem,
+  MultiSelectedItemDropdown({
+    required this.list,
+    this.hintText,
+    this.onSelectedItem,
     this.initialValue,
     this.itemTextStyle,
     this.hintTextStyle,
     this.iconColor,
     this.backgroundDropdownColor = const Color(0xFFFFFFFF),
-    this.backgroundDropdown2Color = const Color(0xFFF6F6F6),
+    this.backgroundBorderRadiusColor = const Color(0xFFF6F6F6),
     this.backgroundChipColor = const Color(0xFFFFFFFF),
     this.backgroundChipTextColor = const Color(0xFF000000),
-    this.showAll = false,
-    this.showBorder = false,
+    this.showBorderRadius = false,
     this.isMultiSelected = false,
     this.isShowMultiSelected = false,
     this.selectedList,
@@ -110,16 +108,6 @@ class _MultiSelectedItemDropdownState<T>
     });
   }
 
-  _isSelectedAll(T value) {
-    bool isString = value is String;
-    if (isString) {
-      return value == DROP_DOWN_ITEM_ALL;
-    } else {
-      var valueString = widget.stringBuilder?.call(value);
-      return valueString == DROP_DOWN_ITEM_ALL;
-    }
-  }
-
   List<DropdownMenuItem<T>> _buildDropDownMenuItems(List<T> listItems) {
     List<DropdownMenuItem<T>> items = [];
     listItems.forEach(
@@ -150,9 +138,9 @@ class _MultiSelectedItemDropdownState<T>
       ),
       child: Container(
         padding: const EdgeInsets.only(top: 5, bottom: 5),
-        decoration: widget.showBorder
+        decoration: widget.showBorderRadius
             ? BoxDecoration(
-                color: widget.backgroundDropdown2Color,
+                color: widget.backgroundBorderRadiusColor,
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
               )
             : null,
@@ -167,7 +155,7 @@ class _MultiSelectedItemDropdownState<T>
                 margin: const EdgeInsets.only(left: 12),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  widget.hintText,
+                  widget.hintText ?? '',
                   textAlign: TextAlign.left,
                   style: widget.hintTextStyle,
                 ),
@@ -180,7 +168,7 @@ class _MultiSelectedItemDropdownState<T>
                       alignment: Alignment.centerLeft,
                       child: Text(
                         item != null
-                            ? widget.stringBuilder?.call(item) ?? '-'
+                            ? widget.stringBuilder?.call(item) ?? '$item'
                             : '',
                         textAlign: TextAlign.center,
                         style: widget.itemTextStyle,
@@ -203,18 +191,16 @@ class _MultiSelectedItemDropdownState<T>
                 setState(
                   () {
                     if (value == null) return;
-                    if (widget.showAll ?? false) {
-                      _selectedItem = _isSelectedAll(value) ? null : value;
-                    } else {
-                      _selectedItem = value;
-                    }
+                    _selectedItem = value;
 
                     if (widget.isMultiSelected) {
                       _updateSelectedList(value, isAddData: true);
                       widget.onUpdateSelectedList?.call(_selectedList);
                     }
 
-                    widget.onSelectedItem(value);
+                    if (widget.onSelectedItem != null) {
+                      widget.onSelectedItem!.call(value);
+                    }
                   },
                 );
               },
