@@ -33,6 +33,7 @@ class MultiSelectedItemDropdown<T> extends StatefulWidget {
     this.hintTextStyle,
     this.iconColor,
     this.backgroundDropdownColor = const Color(0xFFFFFFFF),
+    this.backgroundDropdown2Color = const Color(0xFFF6F6F6),
     this.backgroundChipColor = const Color(0xFFFFFFFF),
     this.backgroundChipTextColor = const Color(0xFF000000),
     this.showAll = false,
