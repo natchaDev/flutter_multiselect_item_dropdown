@@ -224,7 +224,7 @@ class _MultiSelectedItemDropdownState<T>
   }
 
   Widget _chipListView() {
-    if (_selectedList.isBlank) return Container();
+    if (_selectedList.isEmpty) return Container();
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Wrap(
